@@ -42,6 +42,24 @@
   aside.info th,aside.info td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right;}
   aside.info th:first-child,aside.info td:first-child{text-align:left;}
   #loading{position:absolute;top:16px;right:16px;background:#fff;padding:6px 12px;border-radius:6px;font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.15);z-index:600;display:none;}
+  
+  .info-box {
+  margin-top: 20px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.info-box strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
@@ -85,6 +103,7 @@
         <option value="grigi">Grigi</option>
       </select>
     </div>
+	
     <div class="field">
       <label>Mappa di base</label>
       <select id="basemapSelect">
@@ -93,6 +112,11 @@
         <option value="satellite">Satellite (Esri)</option>
       </select>
     </div>
+	
+	<div class="info-box">
+	  <strong>Dati e metodologia</strong>
+	  Land Surface Temperature derivata dalle immagini estive Landsat 8-9 (USGS/NASA): calcolo della mediana pixel-per-pixel su tutte le acquisizioni estive di ciascun anno, seguita dalla media dei pixel per ogni sezione di censimento. Geometrie delle sezioni e popolazione da Istat, Basi territoriali del censimento permanente 2021.
+	</div>	
   </aside>
 
   <div id="map">
