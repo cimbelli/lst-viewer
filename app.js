@@ -197,7 +197,7 @@ function renderSectionInfo(feature, entry) {
     </tr>`;
   table.querySelector('tbody').innerHTML = serieRows;
 }
-}
+
 function setBasemap(key) {
   if (state.tileLayer) state.map.removeLayer(state.tileLayer);
   const b = BASEMAPS[key];
