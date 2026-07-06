@@ -244,7 +244,7 @@ async function refresh() {
     },
   }).addTo(state.map);
 
-  try { state.map.fitBounds(state.geoLayer.getBounds(), { padding: [20, 20] }); } catch (e) {}
+  //try { state.map.fitBounds(state.geoLayer.getBounds(), { padding: [20, 20] }); } catch (e) {}
   renderLegend(breaks, colors, field);
   renderInfoPanel(entry, geojson, field, values);
 }
@@ -268,6 +268,8 @@ async function onComuneChange() {
   populateIndicatorSelect(entry);
   populateYearSlider(entry);
   await refresh();
+  // Fit del viewport solo qui, quando cambia il comune
+  try { state.map.fitBounds(state.geoLayer.getBounds(), { padding: [20, 20] }); } catch (e) {}
 }
 
 async function init() {
