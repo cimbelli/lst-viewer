@@ -136,7 +136,7 @@ function styleFeature(feature, breaks, colors, field) {
   const v = feature.properties[field];
   return {
     fillColor: v == null ? '#eeeeee' : colorForValue(v, breaks, colors),
-    fillOpacity: 0.75, color: '#888', weight: 0.1,
+    fillOpacity: 0.75, color: '#888', weight: 0.2,
   };
 }
 function renderLegend(breaks, colors, field) {
