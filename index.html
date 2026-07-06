@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mappa interattiva LST e UHI</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root{
+    --ink:#1a1d21; --muted:#6b7280; --line:#e3e5e8; --panel:#fafafa;
+    --accent:#c0392b; --accent-soft:#f3d9d5;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);}
+  #app{display:grid;grid-template-columns:220px 1fr 300px;grid-template-rows:auto 1fr;height:100vh;}
+  header{grid-column:1/4;padding:14px 24px;border-bottom:1px solid var(--line);}
+  header h1{font-size:19px;margin:0;font-weight:700;}
+  header .year-row{display:flex;align-items:center;gap:12px;margin-top:8px;}
+  header .year-row label{font-size:12px;color:var(--muted);min-width:32px;}
+  header .year-row input[type=range]{flex:1;accent-color:var(--accent);}
+  header .year-row .yearval{font-size:13px;font-weight:600;min-width:40px;text-align:right;}
+
+  aside.controls{grid-row:2;padding:16px;border-right:1px solid var(--line);background:var(--panel);overflow-y:auto;}
+  aside.controls .field{margin-bottom:16px;}
+  aside.controls label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;}
+  aside.controls select, aside.controls input[type=range]{width:100%;}
+  select{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:13px;}
+  .slider-val{font-size:12px;color:var(--accent);float:right;font-weight:600;}
+  input[type=range]{accent-color:var(--accent);}
+
+  #map{grid-row:2;position:relative;}
+  #legend{position:absolute;bottom:16px;left:16px;background:#fffffff2;padding:8px 10px;border-radius:6px;font-size:11px;box-shadow:0 1px 4px rgba(0,0,0,.15);z-index:500;}
+  #legend .swatches{display:flex;}
+  #legend .swatch{width:26px;height:12px;}
+  #legend .label{margin-top:8px;font-weight:600;}
+
+  aside.info{grid-row:2;padding:16px;border-left:1px solid var(--line);overflow-y:auto;font-size:13px;}
+  aside.info dt{color:var(--muted);font-size:11px;margin-top:10px;}
+  aside.info dd{margin:0;font-weight:600;}
+  aside.info table{width:100%;border-collapse:collapse;margin-top:12px;font-size:11px;}
+  aside.info th,aside.info td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right;}
+  aside.info th:first-child,aside.info td:first-child{text-align:left;}
+  #loading{position:absolute;top:16px;right:16px;background:#fff;padding:6px 12px;border-radius:6px;font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.15);z-index:600;display:none;}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Mappa interattiva della temperatura superficiale estiva e UHI (Urban Heat Island)</h1>
+    <div class="year-row">
+      <label>Anno</label>
+      <input type="range" id="yearSlider" min="2020" max="2025" step="1" value="2025">
+      <span class="yearval" id="yearVal">2025</span>
+    </div>
+  </header>
+
+  <aside class="controls">
+    <div class="field">
+      <label>Comune</label>
+      <select id="comuneSelect"></select>
+    </div>
+    <div class="field">
+      <label>Indicatore</label>
+      <select id="indicatorSelect"></select>
+    </div>
+    <div class="field">
+      <label>Classificazione</label>
+      <select id="classSelect">
+        <option value="quantile">Quantili</option>
+        <option value="jenks">Rotture naturali (Jenks)</option>
+        <option value="equal">Intervalli uguali</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Numero classi <span class="slider-val" id="numClassesVal">5</span></label>
+      <input type="range" id="numClasses" min="3" max="9" step="1" value="5">
+    </div>
+    <div class="field">
+      <label>Palette</label>
+      <select id="paletteSelect">
+        <option value="giallorosso">Giallo-Rosso</option>
+        <option value="blurosso">Blu-Rosso</option>
+        <option value="viridis">Viridis</option>
+        <option value="grigi">Grigi</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Mappa di base</label>
+      <select id="basemapSelect">
+        <option value="osm">OpenStreetMap</option>
+        <option value="positron">Carto Positron</option>
+        <option value="satellite">Satellite (Esri)</option>
+      </select>
+    </div>
+  </aside>
+
+  <div id="map">
+    <div id="loading">Caricamento…</div>
+    <div id="legend"></div>
+  </div>
+
+  <aside class="info">
+    <dl id="infoPanel"></dl>
+    <table id="dataTable"><thead></thead><tbody></tbody></table>
+  </aside>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

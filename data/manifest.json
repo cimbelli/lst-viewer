@@ -1,0 +1,868 @@
+{
+  "comuni": [
+    {
+      "code": "042002",
+      "name": "Ancona",
+      "file": "data/STstats_Ancona.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "007003",
+      "name": "Aosta",
+      "file": "data/STstats_Aosta.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "072006",
+      "name": "Bari",
+      "file": "data/STstats_Bari.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "037006",
+      "name": "Bologna",
+      "file": "data/STstats_Bologna.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "021008",
+      "name": "Bolzano",
+      "file": "data/STstats_Bolzano.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "092009",
+      "name": "Cagliari",
+      "file": "data/STstats_Cagliari.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "070006",
+      "name": "Campobasso",
+      "file": "data/STstats_Campobasso.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "087015",
+      "name": "Catania",
+      "file": "data/STstats_Catania.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "079023",
+      "name": "Catanzaro",
+      "file": "data/STstats_Catanzaro.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "048017",
+      "name": "Firenze",
+      "file": "data/STstats_Firenze.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "010025",
+      "name": "Genova",
+      "file": "data/STstats_Genova.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "066049",
+      "name": "LAquila",
+      "file": "data/STstats_LAquila.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "083048",
+      "name": "Messina",
+      "file": "data/STstats_Messina.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "015146",
+      "name": "Milano",
+      "file": "data/STstats_Milano.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "063049",
+      "name": "Napoli",
+      "file": "data/STstats_Napoli.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "082053",
+      "name": "Palermo",
+      "file": "data/STstats_Palermo.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "054039",
+      "name": "Perugia",
+      "file": "data/STstats_Perugia.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "076063",
+      "name": "Potenza",
+      "file": "data/STstats_Potenza.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "080063",
+      "name": "Reggio_di_Calabria",
+      "file": "data/STstats_Reggio_di_Calabria.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "058091",
+      "name": "Roma",
+      "file": "data/STstats_Roma.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "001272",
+      "name": "Torino",
+      "file": "data/STstats_Torino.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "022205",
+      "name": "Trento",
+      "file": "data/STstats_Trento.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "032006",
+      "name": "Trieste",
+      "file": "data/STstats_Trieste.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    },
+    {
+      "code": "027042",
+      "name": "Venezia",
+      "file": "data/STstats_Venezia.json",
+      "format": "topojson",
+      "indicators": [
+        {
+          "key": "LST_2019",
+          "label": "LST 2019"
+        },
+        {
+          "key": "LST_2020",
+          "label": "LST 2020"
+        },
+        {
+          "key": "LST_2021",
+          "label": "LST 2021"
+        },
+        {
+          "key": "LST_2022",
+          "label": "LST 2022"
+        },
+        {
+          "key": "LST_2023",
+          "label": "LST 2023"
+        },
+        {
+          "key": "LST_2024",
+          "label": "LST 2024"
+        },
+        {
+          "key": "LST_2025",
+          "label": "LST 2025"
+        }
+      ]
+    }
+  ]
+}
