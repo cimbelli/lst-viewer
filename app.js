@@ -1,9 +1,8 @@
-// ---------------------------------------------------------------------------
-// Mappa interattiva LST/UHI — vanilla JS, nessun backend richiesto.
-// Dati: manifest.json elenca i comuni disponibili; ogni comune ha un file
-// GeoJSON o TopoJSON con gli indicatori già uniti come proprietà per feature
-// (chiave: "<indicatore>_<anno>", es. "Temp_media_2025").
-// ---------------------------------------------------------------------------
+// Mappa interattiva LST — vanilla JS, statico.
+// Dati: manifest.json elenca i comuni; ogni TopoJSON contiene i valori
+// LST_YYYY per ogni anno come proprieta' delle feature. Lo slider Anno
+// seleziona quale campo LST_YYYY visualizzare; nessun nuovo fetch per
+// cambio anno (tutti gli anni sono gia' nel file caricato).
 
 const PALETTES = {
   giallorosso: ['#ffffcc', '#fee187', '#fdae61', '#f46d43', '#a50026'],
@@ -13,28 +12,16 @@ const PALETTES = {
 };
 
 const BASEMAPS = {
-  osm: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-         attr: '&copy; OpenStreetMap contributors' },
-  positron: { url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-         attr: '&copy; OpenStreetMap, &copy; CARTO' },
-  satellite: { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-         attr: 'Tiles &copy; Esri' },
+  osm: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', attr: '&copy; OpenStreetMap contributors' },
+  positron: { url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', attr: '&copy; OpenStreetMap, &copy; CARTO' },
+  satellite: { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', attr: 'Tiles &copy; Esri' },
 };
 
-const state = {
-  manifest: null,
-  comune: null,
-  dataCache: new Map(),   // code -> geojson (already normalized from topojson if needed)
-  geoLayer: null,
-  map: null,
-  tileLayer: null,
-};
-
+const state = { manifest: null, dataCache: new Map(), geoLayer: null, map: null, tileLayer: null };
 const el = (id) => document.getElementById(id);
-const loading = (on) => { el('loading').style.display = on ? 'block' : 'none'; };
+const loading = (on) => { const l = el('loading'); if (l) l.style.display = on ? 'block' : 'none'; };
 
 // ---------- classification ----------
-
 function classQuantile(values, k) {
   const s = [...values].sort((a, b) => a - b);
   const breaks = [s[0]];
@@ -45,7 +32,6 @@ function classQuantile(values, k) {
   breaks.push(s[s.length - 1]);
   return [...new Set(breaks)];
 }
-
 function classEqual(values, k) {
   const min = Math.min(...values), max = Math.max(...values);
   const step = (max - min) / k;
@@ -53,8 +39,6 @@ function classEqual(values, k) {
   for (let i = 0; i <= k; i++) breaks.push(min + step * i);
   return breaks;
 }
-
-// simple Jenks natural breaks (standard iterative algorithm)
 function classJenks(data, k) {
   const values = [...data].sort((a, b) => a - b);
   const n = values.length;
@@ -91,7 +75,6 @@ function classJenks(data, k) {
   }
   return breaks;
 }
-
 function computeBreaks(values, method, k) {
   if (method === 'quantile') return classQuantile(values, k);
   if (method === 'equal') return classEqual(values, k);
@@ -100,14 +83,8 @@ function computeBreaks(values, method, k) {
 }
 
 // ---------- color ramp ----------
-
-function hexToRgb(hex) {
-  const n = parseInt(hex.slice(1), 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-}
-function rgbToHex([r, g, b]) {
-  return '#' + [r, g, b].map(x => Math.round(x).toString(16).padStart(2, '0')).join('');
-}
+function hexToRgb(hex) { const n = parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+function rgbToHex([r, g, b]) { return '#' + [r, g, b].map(x => Math.round(x).toString(16).padStart(2, '0')).join(''); }
 function rampColors(stops, k) {
   const rgb = stops.map(hexToRgb);
   const out = [];
@@ -129,20 +106,14 @@ function colorForValue(v, breaks, colors) {
 }
 
 // ---------- data loading ----------
-
 async function loadManifest() {
   const res = await fetch('data/manifest.json');
   state.manifest = await res.json();
 }
-
-// Un file per comune/anno: gli indicatori sono già campi diretti nelle
-// proprietà (es. "LST_MEAN"), non serve concatenare l'anno al nome campo.
-async function loadComune(entry, year) {
-  const cacheKey = `${entry.code}_${year}`;
-  if (state.dataCache.has(cacheKey)) return state.dataCache.get(cacheKey);
+async function loadComune(entry) {
+  if (state.dataCache.has(entry.code)) return state.dataCache.get(entry.code);
   loading(true);
-  const path = entry.file_pattern.replace('{year}', year);
-  const res = await fetch(path);
+  const res = await fetch(entry.file);
   const raw = await res.json();
   let geojson;
   if (entry.format === 'topojson') {
@@ -151,34 +122,29 @@ async function loadComune(entry, year) {
   } else {
     geojson = raw;
   }
-  state.dataCache.set(cacheKey, geojson);
+  state.dataCache.set(entry.code, geojson);
   loading(false);
   return geojson;
 }
 
 // ---------- rendering ----------
-
 function currentFieldKey() {
-  return el('indicatorSelect').value;
+  // Es. indicatore = "LST", anno = 2025  ->  "LST_2025"
+  return `${el('indicatorSelect').value}_${el('yearSlider').value}`;
 }
-
 function styleFeature(feature, breaks, colors, field) {
   const v = feature.properties[field];
   return {
     fillColor: v == null ? '#eeeeee' : colorForValue(v, breaks, colors),
-    fillOpacity: 0.75,
-    color: '#666',
-    weight: 0.5,
+    fillOpacity: 0.75, color: '#666', weight: 0.5,
   };
 }
-
 function renderLegend(breaks, colors, field) {
   const box = el('legend');
   const swatches = colors.map(c => `<div class="swatch" style="background:${c}"></div>`).join('');
   const labels = breaks.map(b => Math.round(b * 10) / 10).join('&nbsp;&nbsp;');
   box.innerHTML = `<div class="swatches">${swatches}</div><div>${labels}</div><div class="label">${field}</div>`;
 }
-
 function renderInfoPanel(entry, geojson, field, values) {
   const dl = el('infoPanel');
   const min = Math.min(...values), max = Math.max(...values);
@@ -188,12 +154,11 @@ function renderInfoPanel(entry, geojson, field, values) {
   dl.innerHTML = `
     <dt>Comune</dt><dd>${entry.name}</dd>
     <dt>Codice</dt><dd>${entry.code}</dd>
-    <dt>Sezioni visualizzate</dt><dd>${geojson.features.length}</dd>
+    <dt>Sezioni</dt><dd>${geojson.features.length}</dd>
     <dt>Minimo</dt><dd>${min.toFixed(2)}</dd>
     <dt>Massimo</dt><dd>${max.toFixed(2)}</dd>
     <dt>Media</dt><dd>${mean.toFixed(2)}</dd>
-    <dt>Mediana</dt><dd>${median.toFixed(2)}</dd>
-  `;
+    <dt>Mediana</dt><dd>${median.toFixed(2)}</dd>`;
   const rows = geojson.features.slice(0, 8);
   const table = el('dataTable');
   table.querySelector('thead').innerHTML = `<tr><th>SEZ21_ID</th><th>${field}</th></tr>`;
@@ -201,7 +166,6 @@ function renderInfoPanel(entry, geojson, field, values) {
     `<tr><td>${f.properties.SEZ21_ID ?? ''}</td><td>${(f.properties[field] ?? '').toString()}</td></tr>`
   ).join('');
 }
-
 function setBasemap(key) {
   if (state.tileLayer) state.map.removeLayer(state.tileLayer);
   const b = BASEMAPS[key];
@@ -211,11 +175,10 @@ function setBasemap(key) {
 async function refresh() {
   const entry = state.manifest.comuni.find(c => c.code === el('comuneSelect').value);
   if (!entry) return;
-  const year = el('yearSlider').value;
-  const geojson = await loadComune(entry, year);
-
+  const geojson = await loadComune(entry);
   const field = currentFieldKey();
   const values = geojson.features.map(f => f.properties[field]).filter(v => v != null);
+  if (values.length === 0) { console.warn(`Nessun valore per ${field}`); return; }
   const k = parseInt(el('numClasses').value, 10);
   const method = el('classSelect').value;
   const breaks = computeBreaks(values, method, k);
@@ -232,23 +195,17 @@ async function refresh() {
   }).addTo(state.map);
 
   try { state.map.fitBounds(state.geoLayer.getBounds(), { padding: [20, 20] }); } catch (e) {}
-
-  renderLegend(breaks, colors, `${el('indicatorSelect').value} - ${el('yearSlider').value}`);
+  renderLegend(breaks, colors, field);
   renderInfoPanel(entry, geojson, field, values);
 }
 
 // ---------- wiring ----------
-
 function populateComuneSelect() {
-  const sel = el('comuneSelect');
-  sel.innerHTML = state.manifest.comuni.map(c => `<option value="${c.code}">${c.name}</option>`).join('');
+  el('comuneSelect').innerHTML = state.manifest.comuni.map(c => `<option value="${c.code}">${c.name}</option>`).join('');
 }
-
 function populateIndicatorSelect(entry) {
-  const sel = el('indicatorSelect');
-  sel.innerHTML = entry.indicators.map(i => `<option value="${i.key}">${i.label}</option>`).join('');
+  el('indicatorSelect').innerHTML = entry.indicators.map(i => `<option value="${i.key}">${i.label}</option>`).join('');
 }
-
 function populateYearSlider(entry) {
   const slider = el('yearSlider');
   slider.min = entry.years[0];
@@ -256,7 +213,6 @@ function populateYearSlider(entry) {
   slider.value = entry.years[entry.years.length - 1];
   el('yearVal').textContent = slider.value;
 }
-
 async function onComuneChange() {
   const entry = state.manifest.comuni.find(c => c.code === el('comuneSelect').value);
   populateIndicatorSelect(entry);
@@ -267,7 +223,6 @@ async function onComuneChange() {
 async function init() {
   state.map = L.map('map', { renderer: L.canvas() }).setView([43.6, 13.5], 12);
   setBasemap('osm');
-
   await loadManifest();
   populateComuneSelect();
   await onComuneChange();
@@ -280,5 +235,4 @@ async function init() {
   el('yearSlider').addEventListener('input', () => { el('yearVal').textContent = el('yearSlider').value; refresh(); });
   el('basemapSelect').addEventListener('change', () => setBasemap(el('basemapSelect').value));
 }
-
 init();

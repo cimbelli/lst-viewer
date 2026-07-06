@@ -5,34 +5,19 @@
       "name": "Ancona",
       "file": "data/STstats_Ancona.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -41,34 +26,19 @@
       "name": "Aosta",
       "file": "data/STstats_Aosta.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -77,34 +47,19 @@
       "name": "Bari",
       "file": "data/STstats_Bari.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -113,34 +68,19 @@
       "name": "Bologna",
       "file": "data/STstats_Bologna.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -149,34 +89,19 @@
       "name": "Bolzano",
       "file": "data/STstats_Bolzano.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -185,34 +110,19 @@
       "name": "Cagliari",
       "file": "data/STstats_Cagliari.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -221,34 +131,19 @@
       "name": "Campobasso",
       "file": "data/STstats_Campobasso.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -257,34 +152,19 @@
       "name": "Catania",
       "file": "data/STstats_Catania.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -293,34 +173,19 @@
       "name": "Catanzaro",
       "file": "data/STstats_Catanzaro.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -329,34 +194,19 @@
       "name": "Firenze",
       "file": "data/STstats_Firenze.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -365,34 +215,19 @@
       "name": "Genova",
       "file": "data/STstats_Genova.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -401,34 +236,19 @@
       "name": "LAquila",
       "file": "data/STstats_LAquila.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -437,34 +257,19 @@
       "name": "Messina",
       "file": "data/STstats_Messina.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -473,34 +278,19 @@
       "name": "Milano",
       "file": "data/STstats_Milano.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -509,34 +299,19 @@
       "name": "Napoli",
       "file": "data/STstats_Napoli.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -545,34 +320,19 @@
       "name": "Palermo",
       "file": "data/STstats_Palermo.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -581,34 +341,19 @@
       "name": "Perugia",
       "file": "data/STstats_Perugia.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -617,34 +362,19 @@
       "name": "Potenza",
       "file": "data/STstats_Potenza.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -653,34 +383,19 @@
       "name": "Reggio_di_Calabria",
       "file": "data/STstats_Reggio_di_Calabria.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -689,34 +404,19 @@
       "name": "Roma",
       "file": "data/STstats_Roma.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -725,34 +425,19 @@
       "name": "Torino",
       "file": "data/STstats_Torino.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -761,34 +446,19 @@
       "name": "Trento",
       "file": "data/STstats_Trento.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -797,34 +467,19 @@
       "name": "Trieste",
       "file": "data/STstats_Trieste.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     },
@@ -833,34 +488,19 @@
       "name": "Venezia",
       "file": "data/STstats_Venezia.json",
       "format": "topojson",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
       "indicators": [
         {
-          "key": "LST_2019",
-          "label": "LST 2019"
-        },
-        {
-          "key": "LST_2020",
-          "label": "LST 2020"
-        },
-        {
-          "key": "LST_2021",
-          "label": "LST 2021"
-        },
-        {
-          "key": "LST_2022",
-          "label": "LST 2022"
-        },
-        {
-          "key": "LST_2023",
-          "label": "LST 2023"
-        },
-        {
-          "key": "LST_2024",
-          "label": "LST 2024"
-        },
-        {
-          "key": "LST_2025",
-          "label": "LST 2025"
+          "key": "LST",
+          "label": "Temperatura superficiale (LST)"
         }
       ]
     }
