@@ -177,11 +177,26 @@ async function refresh() {
   if (!entry) return;
   const geojson = await loadComune(entry);
   const field = currentFieldKey();
+  const indicator = el('indicatorSelect').value;   // es. "LST"
+
+  // Valori annuali (per statistiche del pannello destro)
   const values = geojson.features.map(f => f.properties[field]).filter(v => v != null);
   if (values.length === 0) { console.warn(`Nessun valore per ${field}`); return; }
+
+  // Valori di TUTTI gli anni disponibili per l'indicatore, uniti in un unico
+  // array — usati per calcolare classi/colori fissi comuni a tutti gli anni.
+  const yearFields = entry.years.map(y => `${indicator}_${y}`);
+  const allYearsValues = [];
+  for (const f of geojson.features) {
+    for (const yf of yearFields) {
+      const v = f.properties[yf];
+      if (v != null) allYearsValues.push(v);
+    }
+  }
+
   const k = parseInt(el('numClasses').value, 10);
   const method = el('classSelect').value;
-  const breaks = computeBreaks(values, method, k);
+  const breaks = computeBreaks(allYearsValues, method, k);   // <-- classi FISSE
   const colors = rampColors(PALETTES[el('paletteSelect').value], breaks.length - 1);
 
   if (state.geoLayer) state.map.removeLayer(state.geoLayer);
