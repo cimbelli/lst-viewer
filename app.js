@@ -159,12 +159,44 @@ function renderInfoPanel(entry, geojson, field, values) {
     <dt>Massimo</dt><dd>${max.toFixed(2)}</dd>
     <dt>Media</dt><dd>${mean.toFixed(2)}</dd>
     <dt>Mediana</dt><dd>${median.toFixed(2)}</dd>`;
-  const rows = geojson.features.slice(0, 8);
+
+  // Placeholder nella tabella finché l'utente non clicca una sezione
   const table = el('dataTable');
-  table.querySelector('thead').innerHTML = `<tr><th>SEZ21_ID</th><th>${field}</th></tr>`;
-  table.querySelector('tbody').innerHTML = rows.map(f =>
-    `<tr><td>${f.properties.SEZ21_ID ?? ''}</td><td>${(f.properties[field] ?? '').toString()}</td></tr>`
-  ).join('');
+  table.querySelector('thead').innerHTML = '';
+  table.querySelector('tbody').innerHTML =
+    '<tr><td style="color:var(--muted);font-style:italic;padding:8px 4px;">Clicca una sezione sulla mappa per vedere i dettagli</td></tr>';
+}
+
+function renderSectionInfo(feature, entry) {
+  const p = feature.properties;
+  const indicator = el('indicatorSelect').value;   // es. "LST"
+
+  // Serie storica dell'indicatore per tutti gli anni del comune
+  const serieRows = entry.years.map(y => {
+    const key = `${indicator}_${y}`;
+    const val = p[key];
+    return `<tr><td>${y}</td><td>${val == null ? 'n/d' : val}</td></tr>`;
+  }).join('');
+
+  const table = el('dataTable');
+  table.querySelector('thead').innerHTML = `
+    <tr><th colspan="2" style="text-align:left;padding-top:12px;">
+      Sezione ${p.SEZ21_ID ?? p.SEZ21 ?? ''}
+    </th></tr>
+    <tr>
+      <th>Popolazione (P1)</th><td>${p.P1 ?? 'n/d'}</td>
+    </tr>
+    <tr>
+      <th>0–4 anni (P14)</th><td>${p.P14 ?? 'n/d'}</td>
+    </tr>
+    <tr>
+      <th>75+ anni (P29)</th><td>${p.P29 ?? 'n/d'}</td>
+    </tr>
+    <tr>
+      <th style="padding-top:8px;">Anno</th><th style="padding-top:8px;">${indicator}</th>
+    </tr>`;
+  table.querySelector('tbody').innerHTML = serieRows;
+}
 }
 function setBasemap(key) {
   if (state.tileLayer) state.map.removeLayer(state.tileLayer);
@@ -206,6 +238,7 @@ async function refresh() {
     onEachFeature: (f, layer) => {
       const v = f.properties[field];
       layer.bindTooltip(`${f.properties.SEZ21_ID ?? ''}: ${v ?? 'n/d'}`, { sticky: true });
+      layer.on('click', () => renderSectionInfo(f, entry));
     },
   }).addTo(state.map);
 
