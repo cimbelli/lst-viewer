@@ -157,7 +157,7 @@ function renderInfoPanel(entry, geojson, field, values) {
     <dt>Comune</dt><dd>${entry.name}</dd>
     <dt>Codice</dt><dd>${entry.code}</dd>
     <dt>Sezioni</dt><dd>${geojson.features.length}</dd>
-    <dt>Minimo</dt><dd>${min.toFixed(2)}</dd>
+    <dt>Minimo</dt><dd>${min.toFixed(2)} (°C)</dd>
     <dt>Massimo</dt><dd>${max.toFixed(2)}</dd>
     <dt>Media</dt><dd>${mean.toFixed(2)}</dd>
     <dt>Mediana</dt><dd>${median.toFixed(2)}</dd>`;
