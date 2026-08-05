@@ -144,16 +144,15 @@ function styleFeature(feature, breaks, colors, field) {
 function renderLegend(breaks, colors, field) {
   const box = el('legend');
   const r = (b) => Math.round(b * 10) / 10;
-  // Un riquadro per classe, con l'intervallo "inizio – fine" sotto ogni colore,
-  // così è chiaro dove comincia e dove finisce ciascun intervallo.
-  const cells = colors.map((c, i) => `
-    <div class="legend-cell">
-      <div class="swatch" style="background:${c}"></div>
-      <div class="rng">${r(breaks[i])}<span class="dash">–</span>${r(breaks[i + 1])}</div>
-    </div>`).join('');
+  // Barra di colori con i valori limite scritti UNA sola volta, allineati ai
+  // confini fra una classe e l'altra.
+  const swatches = colors.map(c => `<div class="swatch" style="background:${c}"></div>`).join('');
+  const ticks = breaks.map(b => `<span>${r(b)}</span>`).join('');
   const unit = /LST/i.test(field) ? ' (°C)' : '';
   box.innerHTML =
-    `<div class="legend-title">${field}${unit}</div><div class="legend-row">${cells}</div>`;
+    `<div class="legend-title">${field}${unit}</div>` +
+    `<div class="legend-bar">${swatches}</div>` +
+    `<div class="legend-ticks">${ticks}</div>`;
 }
  
 // ---------- link di download (Excel + Shapefile) ----------
@@ -161,13 +160,12 @@ function updateDownloadLinks(entry) {
   // Default: file nominati col nome del comune, nelle cartelle excel/ e shapefile/.
   // Override possibile nel manifest tramite entry.excel / entry.shapefile.
   const slug = encodeURIComponent(entry.name);
-  const xlsxHref = entry.excel || `excel/${slug}.xlsx`;
-  const zipHref = entry.shapefile || `shapefile/${slug}.zip`;
+  const xlsxHref = entry.excel || `excel/STstats_${slug}.xlsx`;
+  const zipHref = entry.shapefile || `shapefile/STstats_${slug}.zip`;
  
-  const ax = el('dlExcel'), az = el('dlShape'), nm = el('dlComuneName');
-  if (nm) nm.textContent = entry.name;
-  if (ax) { ax.href = xlsxHref; ax.setAttribute('download', `${entry.name}.xlsx`); ax.title = xlsxHref; }
-  if (az) { az.href = zipHref; az.setAttribute('download', `${entry.name}.zip`); az.title = zipHref; }
+  const ax = el('dlExcel'), az = el('dlShape');
+  if (ax) { ax.href = xlsxHref; ax.setAttribute('download', `STstats_${entry.name}.xlsx`); ax.title = xlsxHref; }
+  if (az) { az.href = zipHref; az.setAttribute('download', `STstats_${entry.name}.zip`); az.title = zipHref; }
 }
 function renderInfoPanel(entry, geojson, field, values) {
   const dl = el('infoPanel');
@@ -313,4 +311,3 @@ async function init() {
   el('basemapSelect').addEventListener('change', () => setBasemap(el('basemapSelect').value));
 }
 init();
- 

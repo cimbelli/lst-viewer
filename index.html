@@ -30,14 +30,13 @@
   input[type=range]{accent-color:var(--accent);}
 
   #map{grid-row:2;position:relative;}
-  #legend{position:absolute;bottom:16px;left:16px;background:#fffffffa;padding:10px 12px;border-radius:8px;font-size:11px;box-shadow:0 1px 6px rgba(0,0,0,.18);z-index:500;max-width:calc(100% - 32px);}
-  #legend .legend-title{font-weight:700;margin-bottom:8px;font-size:12px;}
-  #legend .legend-row{display:flex;align-items:flex-end;}
-  #legend .legend-cell{display:flex;flex-direction:column;align-items:center;min-width:60px;}
-  #legend .legend-cell .swatch{width:100%;height:16px;border:1px solid rgba(0,0,0,.12);border-right:none;}
-  #legend .legend-cell:last-child .swatch{border-right:1px solid rgba(0,0,0,.12);}
-  #legend .legend-cell .rng{margin-top:5px;font-size:10px;color:#333;white-space:nowrap;font-variant-numeric:tabular-nums;}
-  #legend .legend-cell .rng .dash{color:var(--muted);margin:0 1px;}
+  #legend{position:absolute;bottom:16px;left:16px;background:#fffffffa;padding:7px 14px 6px;border-radius:6px;font-size:10px;box-shadow:0 1px 5px rgba(0,0,0,.16);z-index:500;max-width:calc(100% - 32px);}
+  #legend .legend-title{font-weight:700;margin-bottom:5px;font-size:11px;}
+  #legend .legend-bar{display:flex;}
+  #legend .legend-bar .swatch{flex:1 0 38px;height:11px;border:1px solid rgba(0,0,0,.12);border-right:none;}
+  #legend .legend-bar .swatch:last-child{border-right:1px solid rgba(0,0,0,.12);}
+  #legend .legend-ticks{display:flex;justify-content:space-between;margin-top:3px;}
+  #legend .legend-ticks span{width:0;text-align:center;font-size:9px;color:#333;white-space:nowrap;font-variant-numeric:tabular-nums;}
 
   aside.info{grid-row:2;padding:16px;border-left:1px solid var(--line);overflow-y:auto;font-size:13px;}
   aside.info dt{color:var(--muted);font-size:11px;margin-top:10px;}
@@ -146,7 +145,6 @@
 
     <div class="field download-box">
       <div class="dl-title">Scarica dati del comune</div>
-      <div class="dl-comune" id="dlComuneName">—</div>
       <a class="dl-btn" id="dlExcel" href="#" download>
         <span class="dl-ico">⬇</span> Dati Excel <span class="dl-sub">.xlsx</span>
       </a>
