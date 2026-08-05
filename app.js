@@ -3,24 +3,24 @@
 // LST_YYYY per ogni anno come proprieta' delle feature. Lo slider Anno
 // seleziona quale campo LST_YYYY visualizzare; nessun nuovo fetch per
 // cambio anno (tutti gli anni sono gia' nel file caricato).
-
+ 
 const PALETTES = {
   giallorosso: ['#ffffcc', '#fee187', '#fdae61', '#f46d43', '#a50026'],
   blurosso:    ['#2166ac', '#67a9cf', '#f7f7f7', '#ef8a62', '#b2182b'],
   viridis:     ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'],
   grigi:       ['#f7f7f7', '#cccccc', '#969696', '#636363', '#252525'],
 };
-
+ 
 const BASEMAPS = {
   osm: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', attr: '&copy; OpenStreetMap contributors' },
   positron: { url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', attr: '&copy; OpenStreetMap, &copy; CARTO' },
   satellite: { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', attr: 'Tiles &copy; Esri' },
 };
-
+ 
 const state = { manifest: null, dataCache: new Map(), geoLayer: null, map: null, tileLayer: null };
 const el = (id) => document.getElementById(id);
 const loading = (on) => { const l = el('loading'); if (l) l.style.display = on ? 'block' : 'none'; };
-
+ 
 // ---------- classification ----------
 function classQuantile(values, k) {
   const s = [...values].sort((a, b) => a - b);
@@ -81,7 +81,7 @@ function computeBreaks(values, method, k) {
   if (method === 'jenks') return classJenks(values, k);
   return classQuantile(values, k);
 }
-
+ 
 // ---------- color ramp ----------
 function hexToRgb(hex) { const n = parseInt(hex.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
 function rgbToHex([r, g, b]) { return '#' + [r, g, b].map(x => Math.round(x).toString(16).padStart(2, '0')).join(''); }
@@ -104,7 +104,7 @@ function colorForValue(v, breaks, colors) {
   }
   return colors[colors.length - 1];
 }
-
+ 
 // ---------- data loading ----------
 async function loadManifest() {
   const res = await fetch('data/manifest.json');
@@ -126,7 +126,7 @@ async function loadComune(entry) {
   loading(false);
   return geojson;
 }
-
+ 
 // ---------- rendering ----------
 function currentFieldKey() {
   // Es. indicatore = "LST", anno = 2025  ->  "LST_2025"
@@ -143,9 +143,31 @@ function styleFeature(feature, breaks, colors, field) {
 }
 function renderLegend(breaks, colors, field) {
   const box = el('legend');
-  const swatches = colors.map(c => `<div class="swatch" style="background:${c}"></div>`).join('');
-  const labels = breaks.map(b => Math.round(b * 10) / 10).join('&nbsp;&nbsp;');
-  box.innerHTML = `<div class="swatches">${swatches}</div><div>${labels}</div><div class="label">${field}</div>`;
+  const r = (b) => Math.round(b * 10) / 10;
+  // Un riquadro per classe, con l'intervallo "inizio – fine" sotto ogni colore,
+  // così è chiaro dove comincia e dove finisce ciascun intervallo.
+  const cells = colors.map((c, i) => `
+    <div class="legend-cell">
+      <div class="swatch" style="background:${c}"></div>
+      <div class="rng">${r(breaks[i])}<span class="dash">–</span>${r(breaks[i + 1])}</div>
+    </div>`).join('');
+  const unit = /LST/i.test(field) ? ' (°C)' : '';
+  box.innerHTML =
+    `<div class="legend-title">${field}${unit}</div><div class="legend-row">${cells}</div>`;
+}
+ 
+// ---------- link di download (Excel + Shapefile) ----------
+function updateDownloadLinks(entry) {
+  // Default: file nominati col nome del comune, nelle cartelle excel/ e shapefile/.
+  // Override possibile nel manifest tramite entry.excel / entry.shapefile.
+  const slug = encodeURIComponent(entry.name);
+  const xlsxHref = entry.excel || `excel/${slug}.xlsx`;
+  const zipHref = entry.shapefile || `shapefile/${slug}.zip`;
+ 
+  const ax = el('dlExcel'), az = el('dlShape'), nm = el('dlComuneName');
+  if (nm) nm.textContent = entry.name;
+  if (ax) { ax.href = xlsxHref; ax.setAttribute('download', `${entry.name}.xlsx`); ax.title = xlsxHref; }
+  if (az) { az.href = zipHref; az.setAttribute('download', `${entry.name}.zip`); az.title = zipHref; }
 }
 function renderInfoPanel(entry, geojson, field, values) {
   const dl = el('infoPanel');
@@ -161,25 +183,25 @@ function renderInfoPanel(entry, geojson, field, values) {
     <dt>Massimo</dt><dd>${max.toFixed(2)} °C</dd>
     <dt>Media</dt><dd>${mean.toFixed(2)} °C</dd>
     <dt>Mediana</dt><dd>${median.toFixed(2)} °C</dd>`;
-
+ 
   // Placeholder nella tabella finché l'utente non clicca una sezione
   const table = el('dataTable');
   table.querySelector('thead').innerHTML = '';
   table.querySelector('tbody').innerHTML =
     '<tr><td style="color:var(--muted);font-style:italic;padding:8px 4px;">Clicca una sezione sulla mappa per vedere i dettagli</td></tr>';
 }
-
+ 
 function renderSectionInfo(feature, entry) {
   const p = feature.properties;
   const indicator = el('indicatorSelect').value;   // es. "LST"
-
+ 
   // Serie storica dell'indicatore per tutti gli anni del comune
   const serieRows = entry.years.map(y => {
 	const key = `${indicator}_${y}`;
 	const val = p[key];
 	return `<tr><td>${y}</td><td>${val == null ? 'n/d' : val + ' °C'}</td></tr>`;
   }).join('');
-
+ 
   const table = el('dataTable');
   table.querySelector('thead').innerHTML = `
     <tr><th colspan="2" style="text-align:left;padding-top:12px;">
@@ -199,24 +221,24 @@ function renderSectionInfo(feature, entry) {
     </tr>`;
   table.querySelector('tbody').innerHTML = serieRows;
 }
-
+ 
 function setBasemap(key) {
   if (state.tileLayer) state.map.removeLayer(state.tileLayer);
   const b = BASEMAPS[key];
   state.tileLayer = L.tileLayer(b.url, { attribution: b.attr, subdomains: 'abc', maxZoom: 19 }).addTo(state.map);
 }
-
+ 
 async function refresh() {
   const entry = state.manifest.comuni.find(c => c.code === el('comuneSelect').value);
   if (!entry) return;
   const geojson = await loadComune(entry);
   const field = currentFieldKey();
   const indicator = el('indicatorSelect').value;   // es. "LST"
-
+ 
   // Valori annuali (per statistiche del pannello destro)
   const values = geojson.features.map(f => f.properties[field]).filter(v => v != null);
   if (values.length === 0) { console.warn(`Nessun valore per ${field}`); return; }
-
+ 
   // Valori di TUTTI gli anni disponibili per l'indicatore, uniti in un unico
   // array — usati per calcolare classi/colori fissi comuni a tutti gli anni.
   const yearFields = entry.years.map(y => `${indicator}_${y}`);
@@ -227,17 +249,17 @@ async function refresh() {
       if (v != null) allYearsValues.push(v);
     }
   }
-
+ 
   const k = parseInt(el('numClasses').value, 10);
   const method = el('classSelect').value;
   const breaks = computeBreaks(allYearsValues, method, k);   // <-- classi FISSE
   const colors = rampColors(PALETTES[el('paletteSelect').value], breaks.length - 1);
-
+ 
   if (state.geoLayer) state.map.removeLayer(state.geoLayer);
   state.geoLayer = L.geoJSON(geojson, {
     renderer: L.canvas(),
     style: (f) => styleFeature(f, breaks, colors, field),
-
+ 
 	onEachFeature: (f, layer) => {
       const v = f.properties[field];
       const vLabel = v == null ? 'n/d' : `${v} °C`;
@@ -245,12 +267,12 @@ async function refresh() {
       layer.on('click', () => renderSectionInfo(f, entry));
     },
   }).addTo(state.map);
-
+ 
   //try { state.map.fitBounds(state.geoLayer.getBounds(), { padding: [20, 20] }); } catch (e) {}
   renderLegend(breaks, colors, field);
   renderInfoPanel(entry, geojson, field, values);
 }
-
+ 
 // ---------- wiring ----------
 function populateComuneSelect() {
   el('comuneSelect').innerHTML = state.manifest.comuni.map(c => `<option value="${c.code}">${c.name}</option>`).join('');
@@ -269,18 +291,19 @@ async function onComuneChange() {
   const entry = state.manifest.comuni.find(c => c.code === el('comuneSelect').value);
   populateIndicatorSelect(entry);
   populateYearSlider(entry);
+  updateDownloadLinks(entry);
   await refresh();
   // Fit del viewport solo qui, quando cambia il comune
   try { state.map.fitBounds(state.geoLayer.getBounds(), { padding: [20, 20] }); } catch (e) {}
 }
-
+ 
 async function init() {
   state.map = L.map('map', { renderer: L.canvas() }).setView([43.6, 13.5], 12);
   setBasemap('osm');
   await loadManifest();
   populateComuneSelect();
   await onComuneChange();
-
+ 
   el('comuneSelect').addEventListener('change', onComuneChange);
   el('indicatorSelect').addEventListener('change', refresh);
   el('classSelect').addEventListener('change', refresh);
@@ -290,3 +313,4 @@ async function init() {
   el('basemapSelect').addEventListener('change', () => setBasemap(el('basemapSelect').value));
 }
 init();
+ 

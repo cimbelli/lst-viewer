@@ -30,10 +30,14 @@
   input[type=range]{accent-color:var(--accent);}
 
   #map{grid-row:2;position:relative;}
-  #legend{position:absolute;bottom:16px;left:16px;background:#fffffff2;padding:8px 10px;border-radius:6px;font-size:11px;box-shadow:0 1px 4px rgba(0,0,0,.15);z-index:500;}
-  #legend .swatches{display:flex;}
-  #legend .swatch{width:26px;height:12px;}
-  #legend .label{margin-top:8px;font-weight:600;}
+  #legend{position:absolute;bottom:16px;left:16px;background:#fffffffa;padding:10px 12px;border-radius:8px;font-size:11px;box-shadow:0 1px 6px rgba(0,0,0,.18);z-index:500;max-width:calc(100% - 32px);}
+  #legend .legend-title{font-weight:700;margin-bottom:8px;font-size:12px;}
+  #legend .legend-row{display:flex;align-items:flex-end;}
+  #legend .legend-cell{display:flex;flex-direction:column;align-items:center;min-width:60px;}
+  #legend .legend-cell .swatch{width:100%;height:16px;border:1px solid rgba(0,0,0,.12);border-right:none;}
+  #legend .legend-cell:last-child .swatch{border-right:1px solid rgba(0,0,0,.12);}
+  #legend .legend-cell .rng{margin-top:5px;font-size:10px;color:#333;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  #legend .legend-cell .rng .dash{color:var(--muted);margin:0 1px;}
 
   aside.info{grid-row:2;padding:16px;border-left:1px solid var(--line);overflow-y:auto;font-size:13px;}
   aside.info dt{color:var(--muted);font-size:11px;margin-top:10px;}
@@ -60,6 +64,33 @@
   margin-bottom: 5px;
   font-size: 12px;
 }
+
+.download-box{
+  padding:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+.download-box .dl-title{
+  font-size:12px;font-weight:600;color:var(--ink);
+  margin-bottom:8px;
+}
+.download-box .dl-comune{
+  font-size:11px;color:var(--muted);margin-bottom:10px;
+}
+.dl-btn{
+  display:flex;align-items:center;gap:8px;
+  width:100%;padding:8px 10px;margin-bottom:6px;
+  border:1px solid var(--line);border-radius:6px;
+  background:var(--panel);color:var(--ink);
+  font-size:12px;font-weight:600;text-decoration:none;
+  transition:background .15s,border-color .15s;
+}
+.dl-btn:last-child{margin-bottom:0;}
+.dl-btn:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);}
+.dl-btn .dl-ico{font-size:14px;line-height:1;}
+.dl-btn .dl-sub{margin-left:auto;font-size:10px;font-weight:500;color:var(--muted);}
+.dl-btn:hover .dl-sub{color:var(--accent);}
 </style>
 </head>
 <body>
@@ -112,7 +143,18 @@
         <option value="satellite">Satellite (Esri)</option>
       </select>
     </div>
-	
+
+    <div class="field download-box">
+      <div class="dl-title">Scarica dati del comune</div>
+      <div class="dl-comune" id="dlComuneName">—</div>
+      <a class="dl-btn" id="dlExcel" href="#" download>
+        <span class="dl-ico">⬇</span> Dati Excel <span class="dl-sub">.xlsx</span>
+      </a>
+      <a class="dl-btn" id="dlShape" href="#" download>
+        <span class="dl-ico">⬇</span> Shapefile <span class="dl-sub">.zip</span>
+      </a>
+    </div>
+
 	<div class="info-box">
 	  <strong>Dati e metodologia</strong>
 	  Land Surface Temperature derivata dalle immagini estive Landsat 8 e 9 (<a href="https://www.usgs.gov/landsat-missions/landsat-science-products" target="_blank" rel="noopener">Collection 2, Tier 1, Level 2 </a>) con Google Earth Engine: calcolo della mediana pixel-per-pixel su tutte le acquisizioni estive di ciascun anno, seguita dalla media dei pixel per ogni sezione di censimento. <a href="https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/" target="_blank" rel="noopener">Geometrie delle sezioni</a> e <a href="https://www.istat.it/notizia/dati-per-sezioni-di-censimento/" target="_blank" rel="noopener">dati di popolazione</a> da Istat (Basi territoriali e variabili censuarie, censimento 2021).
