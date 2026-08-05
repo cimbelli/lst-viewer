@@ -1,0 +1,9 @@
+per aggiornare i dati lanciare prima il notebook 
+Temp_media-UHI_mediana_stagionale_Landsat8-9_media_sezione_EXPORT_SOLO_SHP_NOMI_CITTA_4mesi_2.ipynb
+presente nella cartella C:\Users\Alex\Dropbox\Istat\209_isole_calore_2026
+Questo aggiornerà i dati con le ultime immagini landsat 
+
+Poi per convertirli in formato topojson per il visualizzatore su GitHub pages basta lanciare il secondo notebook 
+shp2topojson.ipynb nella cartella lst-viewer
+
+basta caricare poi i file sul sito e aggiornare eventualmente il file html
